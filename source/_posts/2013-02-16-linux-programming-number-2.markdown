@@ -91,7 +91,7 @@ go (0);
 
 The flowchart of the go function is presented below.
 
-{% img images/recursive_brute_force.png %}
+{% img images/brute_force/recursive_brute_force.png %}
 
 Recursive brute force can be regarded as a process of spawning a copy of the
 same function and entering it again with storing the current position.
@@ -104,4 +104,4 @@ inactive paths.
 Press right mouse button on the image and choose "View image" to see full size
 image.
 
-{% img images/recursive_brute_force_many.png %}
+{% img images/brute_force/recursive_brute_force_many.png %}
