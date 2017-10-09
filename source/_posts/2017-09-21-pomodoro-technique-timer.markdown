@@ -3,7 +3,9 @@ layout: post
 title: "Pomodoro Technique Timer"
 date: 2017-09-21 23:43:14 -0700
 comments: true
-categories:
+sharing: true
+footer: true
+categories: [arduino, pcb, pomodoro_timer]
 ---
 
 Pomodoro technique is a useful time management technique. There have been
@@ -36,4 +38,4 @@ whole system is designed the way that you can use arduino IDE to compile the
 firmware and program the device.
 
 A general view of the timer.
-{% img images/pomodoro/timer_view.jpg %}
+{% img /images/pomodoro/timer_view.jpg %}
