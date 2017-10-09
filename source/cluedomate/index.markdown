@@ -7,7 +7,7 @@ sharing: true
 footer: true
 ---
 
-{% img images/cluedomate/cluedomate_featured.png %}
+{% img images/cluedomate_featured.png %}
 
 CluedoMate is a helper android application for Cluedo board game. It allows you
 to make notes about what suggestions were made during the game as well as do
