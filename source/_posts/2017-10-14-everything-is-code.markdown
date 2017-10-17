@@ -45,7 +45,21 @@ an interpreter of text editing language. Every keystroke in command mode is an i
 in this language. If you want to can put those instructions in a register and
 execute this batch. It's called macros. You can record macros by entering commands
 and specifying what register you want to store them in or you can just copy and
-a sequence of letter into this register.
+a sequence of letters into this register. Then the whole program can be replayed from this register.
+That was the moment when I became an ideological proponent of vim. Vim wasn't
+just an editor. It was an interactive text processor.
 
+Now, getting back to java programming language. At the time of programming in
+java I was under impression that all languages should be or are like java -
+some variation of c like syntax. Imperative in its nature. It seemed like it
+was normal to write some code in an editor, then it would be compiled and
+executed. Another thing was execution. We used far manager(clone of Norton
+Commander) to run our apps. We rarely typed commands in the command line.
+Command line seemed like something old fashioned. We didn't see point to use
+it. We started using it only because it was the only way to communicate to a
+remote computer over ssh. We didn't like it. It seemed like a limitation of
+our abilities. I had had this attitude for command line until I visited US for the first time.
+Engineers at the US office were programming in vim and were using command like
+like it was their editor for entering small programs.
 
 This topic has been bothering me since I was introduced
