@@ -8,7 +8,7 @@ categories:
 
 Authors of some blog posts on the Internet berate software engineering for not
 being an engineering discipline. They like to give examples how accountable and
-responsible real engineers are and how reckless are software engineers. As a
+ real engineers are and how reckless are software engineers. As a
 person who spent 7 years in university learning different areas of math in
 order to become a software engineer I find those statements preposterous and
 insulting. At the same time I'm willing to admit that a lot of practices that I
