@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "Conscious Programmer"
-date: 2018-08-31 01:32:37 -0700
+date: 2018-12-26 01:32:37 -0700
 comments: true
-categories: 
+sharing: true
+categories:
+footer: true
 ---
 
 Authors of some blog posts on the Internet deprive software engineering of the
@@ -16,7 +18,6 @@ practices that I see in the industrial software engineering give some ground to
 those statements. I arrive to a conclusion that even if software is an
 engineering discipline not everyone practices it as such.
 
-// Lack of adherence to design principles
 After ten years in the industry I'm disappointed by how things are usually
 done. The experience that you gain doesn't elevate you. You keep running into
 the same issues that you need to troubleshoot over your weekend. There is no
@@ -48,8 +49,6 @@ create connectors to old databases. They want to be a part of the community.
 Otherwise the inertia will spew them. From outside it may look like conspiracy
 theory. Programmers create jobs for themselves. Companies waste their resources
 picking among all possible options or maintaining all of them.
-
-// solution
 
 In these cases I like to say that there is no need to look for conspiracy where
 you can explain everything with negligence. Instead of creating five databases
@@ -102,8 +101,6 @@ library primitives. Languages give us too small abstractions. Libraries give us
 too big abstractions. The great number of different languages only inhibits the
 formation of this middle layer.
 
-// Suggestion
-
 So, let's start picking our tools and libraries carefully without creating
 redundancy. Let's tear existing tools apart in order to create new tools from
 those parts. Those smaller parts in their turn can serve somebody else in their
@@ -121,4 +118,4 @@ perfectly complement suckless tools. These programs allow you to build desktop
 environment that can evolve with your understanding of efficient workspace.
 
 Unix philosophy is another great example of how composable programs can be built.
-It looks like that there is way. We just need to try harder.
+It looks like there is a way. We just need to try harder.
