@@ -6,13 +6,15 @@ comments: true
 sharing: true
 footer: true
 ---
-Hi. My name is Victor Denisov. I'm a software engeneer. I'm passionate about
-programming and about languages that help you write correct source code. I'm
-writing in Haskell, C, C++, Java. I use python and bash for auxiliary tasks,
-but avoid using the languages of their kind in bigger projects because of their
-lack of support for static typing.
+Hi, my name is Victor Denisov. I'm a software engineer. I'm passionate about
+programming and about everything that helps building great software -
+development methodologies, writing, code challenges, collaboration. I like
+languages that help writing correct programs. I'm writing in Haskell, C, C++,
+Java. I also like golang and I'm mastering it at the moment. I use python and bash for
+auxiliary tasks, but avoid using the languages of their kind in bigger projects
+because of their lack of support for static typing.
 
-During my university years (2003 - 2008) I participated in ACM ICPC and TopCoder
+During my years at Saratov State University (2003 - 2008) I participated in ACM ICPC and TopCoder
 contests.
 
 [CV](/about-me/CV.pdf)
