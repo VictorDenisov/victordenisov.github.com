@@ -17,4 +17,4 @@ because of their lack of support for static typing.
 During my years at Saratov State University (2003 - 2008) I participated in ACM ICPC and TopCoder
 contests.
 
-[CV](/about-me/CV.pdf)
+[{% img /images/icons/github-sign.png 64 64 %}](https://github.com/VictorDenisov) [{% img /images/icons/text-file.png 64 64 %}](/about-me/CV.pdf)
