@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Victor Denisov's blog]]></title>
+  <title><![CDATA[Victor Denisov's Blog]]></title>
   <link href="http://victordenisov.github.io/atom.xml" rel="self"/>
   <link href="http://victordenisov.github.io/"/>
-  <updated>2019-03-03T11:58:39-08:00</updated>
+  <updated>2019-03-03T14:29:14-08:00</updated>
   <id>http://victordenisov.github.io/</id>
   <author>
     <name><![CDATA[Victor Denisov]]></name>
