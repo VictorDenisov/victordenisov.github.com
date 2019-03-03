@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Pomodoro Technique Timer - Victor Denisov's blog</title>
+  <meta name="author" content="Victor Denisov">
+
+  
+  <meta name="description" content="Pomodoro technique is a useful time management technique. There have been
+written a lot about pomodoro technique ever since it was published by &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Victor Denisov's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Victor Denisov's blog</a></h1>
+  
+    <h2>A Blog About Programming</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="victordenisov.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/cluedomate">CluedoMate</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about-me">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Pomodoro Technique Timer</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-09-21T23:43:14-07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>11:43 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Pomodoro technique is a useful time management technique. There have been
+written a lot about pomodoro technique ever since it was published by
+Francesco Cirillo in the late 1980-s.</p>
+
+<p>The technique recommends using a mechanical timer for measuring time. There are
+several reasons for using a mechanical timer: ticking timer reminds about
+pomodoro in progress and presumably boosts focus.</p>
+
+<p>Conventional kitchen timers are very nice, but they are not particularly
+convenient for office environment. They are ticking, and their ringing is too
+loud and very difficult to adjust. There are many apps for pomodoro technique
+timer, but I&rsquo;ve always wanted something that satisfies my requirements and has
+a physical button rather than a virtual one. I tried retrofitting existing
+timers and toys. It turned out to be easier to build an electronic timer. It
+also looks very techy.</p>
+
+<p>You can find the eagle project files
+<a href="https://github.com/VictorDenisov/pomodoro-timer-pcb">here</a>. I used oshpark
+community order for PCBs. You can order this PCB
+<a href="https://oshpark.com/shared_projects/IVhyku4U">here</a> The firmware is available
+<a href="https://github.com/VictorDenisov/arduino-pomodoro">here</a> I used sparkfun
+<a href="https://www.sparkfun.com/products/9825">USBtiny ISP</a> to program it.</p>
+
+<p>The timer has five binary positions for displaying remaining minutes. It also
+has LEDs for busy and available mode. You can tell your colleagues that if the
+light is red then you are busy. The timer goes off with an audible beep. The
+whole system is designed the way that you can use arduino IDE to compile the
+firmware and program the device.</p>
+
+<p>A general view of the timer.
+<img src="/images/pomodoro/timer_view.jpg"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Victor Denisov</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-09-21T23:43:14-07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>11:43 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/arduino/'>arduino</a>, <a class='category' href='/blog/categories/pcb/'>pcb</a>, <a class='category' href='/blog/categories/pomodoro-timer/'>pomodoro_timer</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer/" data-via="" data-counturl="http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/02/16/linux-programming-number-2/" title="Previous Post: Linux programming #2">&laquo; Linux programming #2</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/10/14/everything-is-code/" title="Next Post: Everything Is Code">Everything Is Code &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/12/26/conscious-programmer/">Conscious Programmer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/02/21/two-ways-to-organize/">Two Ways to Organize Anything</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/22/variants-of-builder-pattern/">Classification of Variants of Builder Pattern</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/10/14/everything-is-code/">Everything Is Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/09/21/pomodoro-technique-timer/">Pomodoro Technique Timer</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Victor Denisov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

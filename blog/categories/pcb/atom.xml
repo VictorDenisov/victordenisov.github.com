@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Pcb | Victor Denisov's blog]]></title>
+  <link href="http://victordenisov.github.io/blog/categories/pcb/atom.xml" rel="self"/>
+  <link href="http://victordenisov.github.io/"/>
+  <updated>2019-03-03T11:58:39-08:00</updated>
+  <id>http://victordenisov.github.io/</id>
+  <author>
+    <name><![CDATA[Victor Denisov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Pomodoro Technique Timer]]></title>
+    <link href="http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer/"/>
+    <updated>2017-09-21T23:43:14-07:00</updated>
+    <id>http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer</id>
+    <content type="html"><![CDATA[<p>Pomodoro technique is a useful time management technique. There have been
+written a lot about pomodoro technique ever since it was published by
+Francesco Cirillo in the late 1980-s.</p>
+
+<p>The technique recommends using a mechanical timer for measuring time. There are
+several reasons for using a mechanical timer: ticking timer reminds about
+pomodoro in progress and presumably boosts focus.</p>
+
+<p>Conventional kitchen timers are very nice, but they are not particularly
+convenient for office environment. They are ticking, and their ringing is too
+loud and very difficult to adjust. There are many apps for pomodoro technique
+timer, but I&rsquo;ve always wanted something that satisfies my requirements and has
+a physical button rather than a virtual one. I tried retrofitting existing
+timers and toys. It turned out to be easier to build an electronic timer. It
+also looks very techy.</p>
+
+<p>You can find the eagle project files
+<a href="https://github.com/VictorDenisov/pomodoro-timer-pcb">here</a>. I used oshpark
+community order for PCBs. You can order this PCB
+<a href="https://oshpark.com/shared_projects/IVhyku4U">here</a> The firmware is available
+<a href="https://github.com/VictorDenisov/arduino-pomodoro">here</a> I used sparkfun
+<a href="https://www.sparkfun.com/products/9825">USBtiny ISP</a> to program it.</p>
+
+<p>The timer has five binary positions for displaying remaining minutes. It also
+has LEDs for busy and available mode. You can tell your colleagues that if the
+light is red then you are busy. The timer goes off with an audible beep. The
+whole system is designed the way that you can use arduino IDE to compile the
+firmware and program the device.</p>
+
+<p>A general view of the timer.
+<img src="/images/pomodoro/timer_view.jpg"></p>
+]]></content>
+  </entry>
+  
+</feed>

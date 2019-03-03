@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Linux Programming #2 - Victor Denisov's blog</title>
+  <meta name="author" content="Victor Denisov">
+
+  
+  <meta name="description" content="This is the synopsis of the second Linux programming lab. The assignment for the second lab The second assignment is to write a program that prints &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://victordenisov.github.io/blog/2013/02/16/linux-programming-number-2/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Victor Denisov's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Victor Denisov's blog</a></h1>
+  
+    <h2>A Blog About Programming</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="victordenisov.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/cluedomate">CluedoMate</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about-me">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Linux Programming #2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-02-16T15:31:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:31 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This is the synopsis of the second Linux programming lab.</p>
+
+<h2>The assignment for the second lab</h2>
+
+<p>The second assignment is to write a program that prints words which are
+combinations of all characters of an alphabet. The combinations should have
+certain length. For example, if length of the words is 3 and the alphabet is
+&ldquo;abc&rdquo; then all possible combinations will be</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>aaa
+</span><span class='line'>aab
+</span><span class='line'>aac
+</span><span class='line'>aba
+</span><span class='line'>abb
+</span><span class='line'>abc
+</span><span class='line'>aca
+</span><span class='line'>acb
+</span><span class='line'>acc
+</span><span class='line'>baa
+</span><span class='line'>bab
+</span><span class='line'>bac
+</span><span class='line'>bba
+</span><span class='line'>bbb
+</span><span class='line'>bbc
+</span><span class='line'>bca
+</span><span class='line'>bcb
+</span><span class='line'>bcc
+</span><span class='line'>caa
+</span><span class='line'>cab
+</span><span class='line'>cac
+</span><span class='line'>cba
+</span><span class='line'>cbb
+</span><span class='line'>cbc
+</span><span class='line'>cca
+</span><span class='line'>ccb
+</span><span class='line'>ccc</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Naive solution</h2>
+
+<p>Here is the easiest solution to print a list like this one above:</p>
+
+<figure class='code'><figcaption><span>primitive bruteforce with nested loops </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">char</span> <span class="o">*</span> <span class="n">alph</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k1</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">k1</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k2</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">k2</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k3</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">k3</span><span class="p">)</span>
+</span><span class='line'>          <span class="p">{</span>
+</span><span class='line'>            <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;%c%c%c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">alph</span><span class="p">[</span><span class="n">k1</span><span class="p">],</span> <span class="n">alph</span><span class="p">[</span><span class="n">k2</span><span class="p">],</span> <span class="n">alph</span><span class="p">[</span><span class="n">k3</span><span class="p">]);</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However this solution has a significant limitation. We can&rsquo;t get words of
+arbitrary length. Recursive bruteforce can overcome this limitation.</p>
+
+<h2>Recursive bruteforce</h2>
+
+<figure class='code'><figcaption><span>recursive bruteforce </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">void</span> <span class="nf">go</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="n">N</span><span class="p">)</span> <span class="c1">// N - length of the word</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ALPH_LEN</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">alph</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span class='line'>      <span class="n">go</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Invocation of go from the main function looks like this:</p>
+
+<figure class='code'><figcaption><span>recursive bruteforce </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="n">go</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The flowchart of the go function is presented below.</p>
+
+<p><img src="/images/brute_force/recursive_brute_force.png"></p>
+
+<p>Recursive brute force can be regarded as a process of spawning a copy of the
+same function and entering it again with storing the current position.</p>
+
+<p>The following flowchart depicts control flow of a program that prints all words
+of length 4. Green lines mean forward pass. Blue lines mean backward pass when
+the function returns to the place of its invocation. Black lines stand for
+inactive paths.</p>
+
+<p>Press right mouse button on the image and choose &ldquo;View image&rdquo; to see full size
+image.</p>
+
+<p><img src="/images/brute_force/recursive_brute_force_many.png"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Victor Denisov</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-02-16T15:31:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:31 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://victordenisov.github.io/blog/2013/02/16/linux-programming-number-2/" data-via="" data-counturl="http://victordenisov.github.io/blog/2013/02/16/linux-programming-number-2/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/02/09/linux-programming-number-1/" title="Previous Post: Linux programming #1">&laquo; Linux programming #1</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/09/21/pomodoro-technique-timer/" title="Next Post: Pomodoro Technique Timer">Pomodoro Technique Timer &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/12/26/conscious-programmer/">Conscious Programmer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/02/21/two-ways-to-organize/">Two Ways to Organize Anything</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/22/variants-of-builder-pattern/">Classification of Variants of Builder Pattern</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/10/14/everything-is-code/">Everything Is Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/09/21/pomodoro-technique-timer/">Pomodoro Technique Timer</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Victor Denisov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

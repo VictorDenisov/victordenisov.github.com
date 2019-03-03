@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://victordenisov.github.io/sitemap.xml 

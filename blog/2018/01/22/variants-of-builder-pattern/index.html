@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Classification of Variants of Builder Pattern - Victor Denisov's blog</title>
+  <meta name="author" content="Victor Denisov">
+
+  
+  <meta name="description" content="Intro Builder pattern seems to be one of the most versatile patterns of all
+creational patterns. Its role is usually underestimated and it usually &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://victordenisov.github.io/blog/2018/01/22/variants-of-builder-pattern/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Victor Denisov's blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Victor Denisov's blog</a></h1>
+  
+    <h2>A Blog About Programming</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="victordenisov.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/cluedomate">CluedoMate</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about-me">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Classification of Variants of Builder Pattern</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-01-22T20:58:57-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>8:58 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Intro</h2>
+
+<p>Builder pattern seems to be one of the most versatile patterns of all
+creational patterns. Its role is usually underestimated and it usually goes
+unnoticed among other easier for understanding creational patterns: <code>Abstract
+Factory</code>, <code>Singleton</code>, <code>Prototype</code>. Further I suggest to review some of
+variations of <code>Builder</code> pattern. In certain cases the variations bring
+the pattern closer to <code>Visitor</code> pattern. In other cases the modifications bring
+it closer to <code>Abstract Factory</code> pattern. Nevertheless the way it is used stays the same.
+All the variants give us fine tuned control over the dependencies and modularity
+of the code where the <code>Builder</code> pattern is used.</p>
+
+<h2>Classic Description</h2>
+
+<p><code>Builder</code> pattern is widely known from the book by Gang of Four<strong>[1]</strong></p>
+
+<p><code>Builder</code> pattern separates the process of construction of a complex object from
+its representation. So that the outcome of the same process of construction
+can be different.</p>
+
+<p>Classic applications of builder pattern is presented on the class diagram
+<img src="/images/builder/class_diagram.png"></p>
+
+<p>Sequence diagram</p>
+
+<p><img src="/images/builder/interaction_diagram.png"></p>
+
+<p>illustrates the relationship of builder and director with the client. This
+variant of <code>Builder</code> pattern can be used in a code that is responsible for
+building charts of arbitrary format:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class PriceData {
+</span><span class='line'>    Map&lt;String, Integer&gt; data;
+</span><span class='line'>    public void buildChart(ChartBuilder chartBuilder) {
+</span><span class='line'>        for (Map.Entry&lt;String, Integer&gt; entry: data.entrySet()) {
+</span><span class='line'>            chartBuilder.addKeyValue(
+</span><span class='line'>                entry.getKey(), entry.getValue());
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case the main application will be a client. The collector of the data
+for the diagrams will be a director. The construction of concrete charts(pie
+chart, histograms, line chart) will be done by a concrete implementation of
+builder - a class implementing ChartBuilder. This usage allows us to abstract
+out the process of construction from the concrete implementation of the object
+being constructed.</p>
+
+<h2>Modifications of The Pattern</h2>
+
+<p>In common practice we can encounter modifications of <code>Builder</code> pattern that
+allow us to manage dependencies inside the project in various ways. The
+modifications fall into different categories based on the location of
+GetResult method call and on the number of directors.</p>
+
+<h3>Location of GetResult Call</h3>
+
+<p>Variations of <code>Builder</code> pattern can be classified based on the location of
+GetResult call. GetResult method can be called either from the director or
+from the client.</p>
+
+<h4>Invocation From Client</h4>
+
+<p>If <code>GetResult</code> method is invoked from the client then this variant is for
+abstracting out the director from the implementation of resulting object as
+it&rsquo;s represented in the classic case.</p>
+
+<h4>Invocation From Director</h4>
+
+<p>In this case the result is required by the director itself, but the director
+doesn&rsquo;t know the implementation. If the client doesn&rsquo;t invoke set-methods of
+the Builder then this implementation of Builder pattern can be replaced with
+<code>AbstractFactory</code>. In the case when a part of the director should be configured
+before passing it to the director <code>AbstractFactory</code> is not suitable because it
+focuses on synchronous object construction. In this case <code>Builder</code> pattern is the
+most suitable option.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class ClassProcessor {
+</span><span class='line'>    public main() {
+</span><span class='line'>        builder = new ExprProcBuilder();
+</span><span class='line'>        builder.setClassFields()
+</span><span class='line'>        methodProcessor.processMethod(builder);
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>class MethodProcessor {
+</span><span class='line'>    public processMethod(ExprProcBuilder builder) {
+</span><span class='line'>        builder.addLocalVars();
+</span><span class='line'>        builder.buildExprProc()
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>The Number of Directors</h3>
+
+<p>Variations of the pattern can also be defined by the number of directors.</p>
+
+<h4>No Directors</h4>
+
+<p>There may be no directors. In this case <code>Builder</code> pattern is used as a constructor
+with named arguments. Client and director are the same entity.</p>
+
+<h4>One Director</h4>
+
+<p>If there is one director then it leads us to the classical variant of <code>Builder</code>
+pattern for abstracting out the product construction from its concrete
+implementation.</p>
+
+<h4>Several Directors</h4>
+
+<p>There may be more than one director. Everyone in the chain of directors sets
+the parameters that it knows about and passes the builder to the next director.
+This variant of <code>Builder</code> pattern reminds more of <code>Visitor</code> pattern. Pattern
+<code>Visitor</code> is usually used for handling <code>Composite</code> pattern. In the case of
+<code>Builder</code> pattern the visited objects can have arbitrary nature. Here is an illustration
+of the case with several directors:</p>
+
+<p><img src="/images/builder/chain_of_invocations.png"></p>
+
+<h2>Features of The Pattern</h2>
+
+<h3>Inversion of Dependencies</h3>
+
+<p>One of the main reasons to use <code>Builder</code> pattern - inversion of dependencies. The
+builder is passed to a director during construction, what ensures isolation of the
+director from the implementation details of concrete builder.</p>
+
+<h3>Named Arguments of Constructor</h3>
+
+<p>Another reason as it&rsquo;s specified in [2] to use <code>Builder</code> pattern can be a lot
+of arguments of the class being constructed. Let&rsquo;s take a look at a piece of
+sample code.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>new Builder().setA(value1).setB(value2).createProduct()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>From this code it&rsquo;s clear that <code>value1</code> becomes <code>A</code> in the new product, and
+<code>value2</code> becomes <code>B</code>. It allows us to change the order of arguments in the
+invocation. Named arguments make the code more readable. The invocation of
+method <code>GetResult</code> is done by the director itself, which is also a client.
+<code>Builder</code>&rsquo;s role here is similar to the role of <code>AbstractFactory</code> pattern, but
+unlike <code>AbstractFactory</code> pattern, who&rsquo;s task is to give access to construction
+of construction of a group of connected objects, <code>Builder</code> is focused on
+construction of instances of only one class.</p>
+
+<h3>Decomposition in Time</h3>
+
+<p>This pattern also allows us to configure builder as we receive data necessary
+for configuring it. So the construction can lapse in time instead of happening
+at once as it&rsquo;s done in factories or constructors. <code>Builder</code> pattern tracks the
+consistency of the object being constructed and if some of the arguments are
+missing it can throw exceptions or execute any other action required to inform
+about the incomplete state.</p>
+
+<h3>Loosening Coupling</h3>
+
+<p>This approach also allows us to loosen coupling between classes. Each class can
+set only the arguments this class is aware of and pass the builder further in
+the chain of construction. The classes only need to know about the structure of
+the builder and don&rsquo;t need to know about each other. They also only work with
+the methods they need to know of and don&rsquo;t need to care about the rest of the builder.
+This usage of <code>Builder</code> pattern makes it very similar to <code>Visitor</code> pattern.</p>
+
+<p>Then method <code>GetResult</code> can be invoked when the builder is returned back
+to the client from the chain of invocations inside directors(in the beginning
+of the chain) or by the final director(end of the chain).</p>
+
+<h3>Tolerance for Change of Data Format</h3>
+
+<p>If <code>Builder</code> pattern is used as in sections <code>Loosening Coupling</code> and <code>Several
+Directors</code> then if we need to collect more data we can use new methods only
+where they are required keeping the rest of the chain of directors intact.
+Instead of getting data through get methods sometimes it&rsquo;s more flexible to
+pass <code>Builder</code> pattern.</p>
+
+<h3>Example</h3>
+
+<p>Let&rsquo;s illustrate what we described above in the case for several directors.
+Method GetResult can be invoked by classA as well as by classC. In both cases
+classA and classC can&rsquo;t know anything about each other&rsquo;s dependencies, what
+reduces dependencies of each of them, but gives them access to the required
+object. In addition to that classC receiving partially configured, can change
+only the part he knows about and as a result receiving different objects
+depending on the requirements.</p>
+
+<p>The latest approach is particularly convenient, when the client class requires
+different instances of a class depending on the data that client class has,
+but IOC container restricts access to constructors.</p>
+
+<h2>Conclusion</h2>
+
+<p><code>Builder</code> pattern is a sufficiently powerful and flexible instrument for
+dealing with dependencies inside a project and inversing the dependencies.
+Regrettably, the usage of <code>Builder</code> pattern requires writing a lot of
+boilerplate code. It complicates effective usage of this pattern in modern
+programming languages.</p>
+
+<p>As Rob Pike appropriately mentioned in his presentation at OSCON 2010: patterns
+- are usually solutions whose implementation is missing from the language. We
+can only hope that working with builder pattern in future languages will be as
+simple as just writing a constructor.</p>
+
+<h2>Appendix A</h2>
+
+<p><img src="/images/builder/class_diagram.png"></p>
+
+<h2>Appendix B</h2>
+
+<p><img src="/images/builder/interaction_diagram.png"></p>
+
+<h2>Appendix C</h2>
+
+<p><img src="/images/builder/chain_of_invocations.png"></p>
+
+<h2>Bibliography</h2>
+
+<ol>
+<li>Erich Gamma and others. Design Patterns: Elements of Reusable Object-Oriented Software, 395 p.</li>
+<li>Bloch J. Effective Java. Second edition. Prentice Hall, 2008.</li>
+<li>More on getters and setters - JavaWorld [Electronic resource]. URL: <a href="http://www.javaworld.com/javaworld/jw-01-2004/jw-0102-toolbox.html">http://www.javaworld.com/javaworld/jw-01-2004/jw-0102-toolbox.html</a> (date of access: 06.02.2011).</li>
+</ol>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Victor Denisov</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-01-22T20:58:57-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>8:58 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://victordenisov.github.io/blog/2018/01/22/variants-of-builder-pattern/" data-via="" data-counturl="http://victordenisov.github.io/blog/2018/01/22/variants-of-builder-pattern/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/10/14/everything-is-code/" title="Previous Post: Everything Is Code">&laquo; Everything Is Code</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2018/02/21/two-ways-to-organize/" title="Next Post: Two Ways to Organize Anything">Two Ways to Organize Anything &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/12/26/conscious-programmer/">Conscious Programmer</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/02/21/two-ways-to-organize/">Two Ways to Organize Anything</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/22/variants-of-builder-pattern/">Classification of Variants of Builder Pattern</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/10/14/everything-is-code/">Everything Is Code</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/09/21/pomodoro-technique-timer/">Pomodoro Technique Timer</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Victor Denisov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

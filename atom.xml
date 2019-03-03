@@ -1,96 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Victor Denisov's blog</title>
-  <meta name="author" content="Victor Denisov">
-
-  
-  <meta name="description" content="Authors of some blog posts on the Internet deprive software engineering of the
-right to be called an engineering discipline. They like to give &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://victordenisov.github.io/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Victor Denisov's blog" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Victor Denisov's blog</a></h1>
-  
-    <h2>A Blog About Programming</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="sitesearch" value="victordenisov.github.io">
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/cluedomate">CluedoMate</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about-me">About Me</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Victor Denisov's blog]]></title>
+  <link href="http://victordenisov.github.io/atom.xml" rel="self"/>
+  <link href="http://victordenisov.github.io/"/>
+  <updated>2019-03-03T11:58:39-08:00</updated>
+  <id>http://victordenisov.github.io/</id>
+  <author>
+    <name><![CDATA[Victor Denisov]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2018/12/26/conscious-programmer/">Conscious Programmer</a></h1>
-    
-    
-      <p class="meta">
-        
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
-
-
-
-<time class='entry-date' datetime='2018-12-26T00:32:37-08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>12:32 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Authors of some blog posts on the Internet deprive software engineering of the
+  
+  <entry>
+    <title type="html"><![CDATA[Conscious Programmer]]></title>
+    <link href="http://victordenisov.github.io/blog/2018/12/26/conscious-programmer/"/>
+    <updated>2018-12-26T00:32:37-08:00</updated>
+    <id>http://victordenisov.github.io/blog/2018/12/26/conscious-programmer</id>
+    <content type="html"><![CDATA[<p>Authors of some blog posts on the Internet deprive software engineering of the
 right to be called an engineering discipline. They like to give examples of how
 accountable and responsible real engineers are and how reckless are software
 engineers. As a person who spent 7 years in university learning different areas
@@ -201,35 +129,15 @@ environment that can evolve with your understanding of efficient workspace.</p>
 
 <p>Unix philosophy is another great example of how composable programs can be built.
 It looks like there is a way. We just need to try harder.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/02/21/two-ways-to-organize/">Two Ways to Organize Anything</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-02-21T23:11:39-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>11:11 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Two Ways to Structure Things</h2>
+  <entry>
+    <title type="html"><![CDATA[Two Ways to Organize Anything]]></title>
+    <link href="http://victordenisov.github.io/blog/2018/02/21/two-ways-to-organize/"/>
+    <updated>2018-02-21T23:11:39-08:00</updated>
+    <id>http://victordenisov.github.io/blog/2018/02/21/two-ways-to-organize</id>
+    <content type="html"><![CDATA[<h2>Two Ways to Structure Things</h2>
 
 <p>I&rsquo;ve come to understanding that most people organize things like if they were
 disassembling a car: 5 inch screws in one pile, 3 inch screws into another
@@ -323,10 +231,10 @@ When we move classes from package to package we want to minimise the number of l
 crossing the boundary of packages.</p>
 
 <p>Three dependencies go through the boundary.
-<img src="/images/two_ways/in_package_a.png"></p>
+<img src="http://victordenisov.github.io/images/two_ways/in_package_a.png"></p>
 
 <p>Two dependencies go through the boundary.
-<img src="/images/two_ways/in_package_b.png"></p>
+<img src="http://victordenisov.github.io/images/two_ways/in_package_b.png"></p>
 
 <p>In this particular case thinking about this AST tree as a library helps a lot.
 The interface Visitor should be stored near the AST tree structures in a
@@ -357,35 +265,15 @@ similar posts:</p>
 <p>This link has even more ways to structure code. What I call horizontal is
 called by kind in this blog:
 [<a href="https://medium.com/@msandin/strategies-for-organizing-code-2c9d690b6f33">https://medium.com/@msandin/strategies-for-organizing-code-2c9d690b6f33</a>]</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/01/22/variants-of-builder-pattern/">Classification of Variants of Builder Pattern</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-01-22T20:58:57-08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>8:58 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Intro</h2>
+  <entry>
+    <title type="html"><![CDATA[Classification of Variants of Builder Pattern]]></title>
+    <link href="http://victordenisov.github.io/blog/2018/01/22/variants-of-builder-pattern/"/>
+    <updated>2018-01-22T20:58:57-08:00</updated>
+    <id>http://victordenisov.github.io/blog/2018/01/22/variants-of-builder-pattern</id>
+    <content type="html"><![CDATA[<h2>Intro</h2>
 
 <p>Builder pattern seems to be one of the most versatile patterns of all
 creational patterns. Its role is usually underestimated and it usually goes
@@ -406,11 +294,11 @@ its representation. So that the outcome of the same process of construction
 can be different.</p>
 
 <p>Classic applications of builder pattern is presented on the class diagram
-<img src="/images/builder/class_diagram.png"></p>
+<img src="http://victordenisov.github.io/images/builder/class_diagram.png"></p>
 
 <p>Sequence diagram</p>
 
-<p><img src="/images/builder/interaction_diagram.png"></p>
+<p><img src="http://victordenisov.github.io/images/builder/interaction_diagram.png"></p>
 
 <p>illustrates the relationship of builder and director with the client. This
 variant of <code>Builder</code> pattern can be used in a code that is responsible for
@@ -524,7 +412,7 @@ This variant of <code>Builder</code> pattern reminds more of <code>Visitor</code
 <code>Builder</code> pattern the visited objects can have arbitrary nature. Here is an illustration
 of the case with several directors:</p>
 
-<p><img src="/images/builder/chain_of_invocations.png"></p>
+<p><img src="http://victordenisov.github.io/images/builder/chain_of_invocations.png"></p>
 
 <h2>Features of The Pattern</h2>
 
@@ -612,15 +500,15 @@ simple as just writing a constructor.</p>
 
 <h2>Appendix A</h2>
 
-<p><img src="/images/builder/class_diagram.png"></p>
+<p><img src="http://victordenisov.github.io/images/builder/class_diagram.png"></p>
 
 <h2>Appendix B</h2>
 
-<p><img src="/images/builder/interaction_diagram.png"></p>
+<p><img src="http://victordenisov.github.io/images/builder/interaction_diagram.png"></p>
 
 <h2>Appendix C</h2>
 
-<p><img src="/images/builder/chain_of_invocations.png"></p>
+<p><img src="http://victordenisov.github.io/images/builder/chain_of_invocations.png"></p>
 
 <h2>Bibliography</h2>
 
@@ -630,35 +518,15 @@ simple as just writing a constructor.</p>
 <li>More on getters and setters - JavaWorld [Electronic resource]. URL: <a href="http://www.javaworld.com/javaworld/jw-01-2004/jw-0102-toolbox.html">http://www.javaworld.com/javaworld/jw-01-2004/jw-0102-toolbox.html</a> (date of access: 06.02.2011).</li>
 </ol>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/10/14/everything-is-code/">Everything Is Code</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-10-14T22:14:57-07:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:14 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I started my long path into the world of computing in norton commander. Then I
+  <entry>
+    <title type="html"><![CDATA[Everything Is Code]]></title>
+    <link href="http://victordenisov.github.io/blog/2017/10/14/everything-is-code/"/>
+    <updated>2017-10-14T22:14:57-07:00</updated>
+    <id>http://victordenisov.github.io/blog/2017/10/14/everything-is-code</id>
+    <content type="html"><![CDATA[<p>I started my long path into the world of computing in norton commander. Then I
 worked in windows 3.11 and windows 95 all windows through windows 2003, windows
 xp. In parallel I was introduced to linux. Initially the only interface I saw
 in Linux was pico commander. Then all the associates of xwindow system showed
@@ -754,35 +622,15 @@ bothered to add them to you standard library of commands. Computer is a machine
 that is built to execute commands.</p>
 
 <p>Writing code is the best way to interact with your computer if not the only one.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/09/21/pomodoro-technique-timer/">Pomodoro Technique Timer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-09-21T23:43:14-07:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>11:43 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Pomodoro technique is a useful time management technique. There have been
+  <entry>
+    <title type="html"><![CDATA[Pomodoro Technique Timer]]></title>
+    <link href="http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer/"/>
+    <updated>2017-09-21T23:43:14-07:00</updated>
+    <id>http://victordenisov.github.io/blog/2017/09/21/pomodoro-technique-timer</id>
+    <content type="html"><![CDATA[<p>Pomodoro technique is a useful time management technique. There have been
 written a lot about pomodoro technique ever since it was published by
 Francesco Cirillo in the late 1980-s.</p>
 
@@ -812,36 +660,16 @@ whole system is designed the way that you can use arduino IDE to compile the
 firmware and program the device.</p>
 
 <p>A general view of the timer.
-<img src="/images/pomodoro/timer_view.jpg"></p>
-</div>
+<img src="http://victordenisov.github.io/images/pomodoro/timer_view.jpg"></p>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/16/linux-programming-number-2/">Linux Programming #2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-02-16T15:31:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:31 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is the synopsis of the second Linux programming lab.</p>
+  <entry>
+    <title type="html"><![CDATA[Linux Programming #2]]></title>
+    <link href="http://victordenisov.github.io/blog/2013/02/16/linux-programming-number-2/"/>
+    <updated>2013-02-16T15:31:00-08:00</updated>
+    <id>http://victordenisov.github.io/blog/2013/02/16/linux-programming-number-2</id>
+    <content type="html"><![CDATA[<p>This is the synopsis of the second Linux programming lab.</p>
 
 <h2>The assignment for the second lab</h2>
 
@@ -983,7 +811,7 @@ arbitrary length. Recursive bruteforce can overcome this limitation.</p>
 
 <p>The flowchart of the go function is presented below.</p>
 
-<p><img src="/images/brute_force/recursive_brute_force.png"></p>
+<p><img src="http://victordenisov.github.io/images/brute_force/recursive_brute_force.png"></p>
 
 <p>Recursive brute force can be regarded as a process of spawning a copy of the
 same function and entering it again with storing the current position.</p>
@@ -996,36 +824,16 @@ inactive paths.</p>
 <p>Press right mouse button on the image and choose &ldquo;View image&rdquo; to see full size
 image.</p>
 
-<p><img src="/images/brute_force/recursive_brute_force_many.png"></p>
-</div>
+<p><img src="http://victordenisov.github.io/images/brute_force/recursive_brute_force_many.png"></p>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/09/linux-programming-number-1/">Linux Programming #1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-02-09T19:03:00-08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:03 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is the synopsis of the first Linux programming lab.</p>
+  <entry>
+    <title type="html"><![CDATA[Linux Programming #1]]></title>
+    <link href="http://victordenisov.github.io/blog/2013/02/09/linux-programming-number-1/"/>
+    <updated>2013-02-09T19:03:00-08:00</updated>
+    <id>http://victordenisov.github.io/blog/2013/02/09/linux-programming-number-1</id>
+    <content type="html"><![CDATA[<p>This is the synopsis of the first Linux programming lab.</p>
 
 <h2>The description of the problem to be solved</h2>
 
@@ -1208,84 +1016,7 @@ Michael Kerrisk</li>
 <li>Richard Stevens</li>
 </ul>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2018/12/26/conscious-programmer/">Conscious Programmer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/02/21/two-ways-to-organize/">Two Ways to Organize Anything</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/01/22/variants-of-builder-pattern/">Classification of Variants of Builder Pattern</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/10/14/everything-is-code/">Everything Is Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/09/21/pomodoro-technique-timer/">Pomodoro Technique Timer</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2019 - Victor Denisov -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>
