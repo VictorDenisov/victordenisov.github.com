@@ -9,8 +9,8 @@
   <meta name="author" content="Victor Denisov">
 
   
-  <meta name="description" content="Authors of some blog posts on the Internet deprive software engineering of the
-right to be called an engineering discipline. They like to give &hellip;">
+  <meta name="description" content="Usually people share their knowledge about monads right after they get to
+understand them. I decided to share my experience with monads when a friend &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +68,245 @@ right to be called an engineering discipline. They like to give &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/05/06/my-trip-into-monads/">My Trip Into Monads</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-05-06T19:28:58-07:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>7:28 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Usually people share their knowledge about monads right after they get to
+understand them. I decided to share my experience with monads when a friend of
+mine started studying this topic. So here it is - my trip into monads.</p>
+
+<p>In this blog post I&rsquo;m not going to give you the exhaustive list of all monads,
+or explain the theory behind monads. I&rsquo;m going to share with you the example
+that I used to develop intuition about monads.</p>
+
+<p>Let&rsquo;s solve the following problem. We are going to build a library for parsing
+different values from a string. For the sake of simplicity we are going to
+build two functions. One function parses a number delimited by whitespaces. The
+other function will be parsing a string delimited by whitespaces. I&rsquo;m going to
+illustrate what monad is in Go. Our Go will be a slightly special flavor of Go.
+It will have genercis. However all the idioms that I demonstrate here are
+imported from Haskell.</p>
+
+<p>In this exercise let&rsquo;s imagine that Go is a purely functional language. You
+can&rsquo;t use any imperative constructs in our version of Go. With one exception
+though. Consecutive assignments are allowed. Those are not imperative
+constructs. Also our Go will have two features: generics and tuples. As a
+result half of the code here won&rsquo;t compile in Go. This code can be successfully
+rewritten in Java and compiled. But I decided to go with the modified Go
+instead of Java because of Go&rsquo;s brevity.</p>
+
+<p>Let&rsquo;s declare the type of our first function. The function that parses a string.
+This function will be accepting an input string and returning the result and
+the remaining string.</p>
+
+<figure class='code'><figcaption><span>parseString </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">parseString</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">res</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">rem</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="err">&#39;&#39;</span><span class="p">,</span> <span class="nx">s</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">res</span><span class="p">,</span> <span class="nx">rem</span> <span class="p">=</span> <span class="nx">parseString</span><span class="p">(</span><span class="nx">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">rem</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ParseInt will look very similar. It can even use parseString except it will need
+to convert the result to int.</p>
+
+<figure class='code'><figcaption><span>parseInt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">parseInt</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">res</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">rem</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">resString</span><span class="p">,</span> <span class="nx">rem</span> <span class="p">=</span> <span class="nx">parseString</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">res</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">strconf</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">resString</span><span class="p">)</span> <span class="c1">// we are ignoring error for the simplicity of the example</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">rem</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&rsquo;s write a function that is supposed to use our two functions. It will
+parse an integer and a string from the provided input string. It will also
+return the remaining string.</p>
+
+<figure class='code'><figcaption><span>Example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">parse</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">rem</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">a</span><span class="p">,</span> <span class="nx">rem1</span> <span class="o">:=</span> <span class="nx">parseInt</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">b</span><span class="p">,</span> <span class="nx">rem2</span> <span class="o">:=</span> <span class="nx">parseString</span><span class="p">(</span><span class="nx">rem1</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">rem2</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, people who were implementing it for the first time in Haskell noticed that
+there is a repetition in this code. We pass the remainder of the previous
+parse function and pass it into the next one. They decided to abstract this
+repetition into a separate data structure. Let&rsquo;s declare a new structure.</p>
+
+<figure class='code'><figcaption><span>Parser Type </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">type</span> <span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">V</span><span class="p">&gt;</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">V</span><span class="p">,</span> <span class="nx">s</span> <span class="kt">string</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&rsquo;s change the signature of our parse functions a bit:</p>
+
+<figure class='code'><figcaption><span>New Version of parseString </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">parseString</span><span class="p">()</span> <span class="nx">Parser</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="err">&#39;&#39;</span><span class="p">,</span> <span class="nx">s</span>
+</span><span class='line'>      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>          <span class="nx">res</span><span class="p">,</span> <span class="nx">rem</span> <span class="p">=</span> <span class="nx">parseString</span><span class="p">(</span><span class="nx">s</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>          <span class="k">return</span> <span class="nx">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">rem</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>New Version of parseInt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">parseInt</span><span class="p">()</span> <span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">Int</span><span class="p">&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">resString</span><span class="p">,</span> <span class="nx">rem</span> <span class="p">=</span> <span class="nx">parseString</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>      <span class="nx">res</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">strconf</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">resString</span><span class="p">)</span> <span class="c1">// we are ignoring error for the simplicity of the example</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">rem</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At this point we need to define another interface that our Parser is going to implement:</p>
+
+<figure class='code'><figcaption><span>Monad interface </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">type</span> <span class="nx">Monad</span><span class="p">&lt;</span><span class="nx">T</span><span class="p">&gt;</span> <span class="kd">interface</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">bind</span> <span class="kd">func</span><span class="p">(</span><span class="nx">f</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">Monad</span><span class="p">&lt;</span><span class="nx">K</span><span class="p">&gt;)</span> <span class="nx">Monad</span><span class="p">&lt;</span><span class="nx">K</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now let&rsquo;s implement bind function for Parser. Pay attention. This is the most difficult
+part of the whole narration.</p>
+
+<figure class='code'><figcaption><span>Parser's Bind </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="o">*</span><span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">T</span><span class="p">&gt;)</span> <span class="nx">bind</span><span class="p">(</span><span class="nx">f</span> <span class="kd">func</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">K</span><span class="p">&gt;)</span> <span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">K</span><span class="p">&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">K</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">value</span><span class="p">,</span> <span class="nx">newS</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">f</span><span class="p">(</span><span class="nx">value</span><span class="p">)(</span><span class="nx">newS</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What it does it return a function that is a chain of two functions together. Function p
+and function f. Bind method just takes two functions and composes them into a bigger function.</p>
+
+<p>The implementation of our example now turns into the following:</p>
+
+<figure class='code'><figcaption><span>Example With Monads </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">parse</span><span class="p">()</span> <span class="nx">Parser</span><span class="p">&lt;(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">parseInt</span><span class="p">().</span><span class="nx">bind</span><span class="p">(</span><span class="kd">func</span> <span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">Parser</span><span class="p">&lt;(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)&gt;</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">parseString</span><span class="p">().</span><span class="nx">bind</span><span class="p">(</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">Parser</span><span class="p">&lt;(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)&gt;{</span>
+</span><span class='line'>      <span class="p">).</span><span class="nx">lift</span><span class="p">((</span><span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">))</span>
+</span><span class='line'>  <span class="p">})</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here we encounter another method of that every monad should implement - lift. In Haskell this method is called return, but I decided not to use this name in order to avoid
+confusion with the built in return. Here is the implementation of lift.</p>
+
+<figure class='code'><figcaption><span>Parser's Lift </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="o">*</span><span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">T</span><span class="p">&gt;)</span> <span class="nx">lift</span><span class="p">(</span><span class="nx">v</span> <span class="nx">T</span><span class="p">)</span> <span class="nx">Parser</span><span class="p">&lt;</span><span class="nx">T</span><span class="p">&gt;</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">T</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Lift just wraps a value into a function.</p>
+
+<p>What we implemented here is called state monad. For me it was the hardest monad
+to understand. I hope this blog post helps you in your understanding of monads.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1228,6 +1467,10 @@ Michael Kerrisk</li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/06/my-trip-into-monads/">My Trip Into Monads</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/12/26/conscious-programmer/">Conscious Programmer</a>
       </li>
     
@@ -1241,10 +1484,6 @@ Michael Kerrisk</li>
     
       <li class="post">
         <a href="/blog/2017/10/14/everything-is-code/">Everything Is Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/09/21/pomodoro-technique-timer/">Pomodoro Technique Timer</a>
       </li>
     
   </ul>
